@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+html {
+  scrollbar-width: normal;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+}
+
+body {
+  font-family: var(--font-poppins), sans-serif;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Light Mode */
+:root {
+  --bg-color: #eff1f0;
+  --text-color: #863e14;
+  --primary-color: #2b3546;
+  --secondary-color: #64748b;
+  --border-color: #903e04;
+  --hover-color: #1e3a8a;
+  --skills-bg: #bda371;
+  --card-border: #903e04;
+  /* --scroll: red; */
+  --card-bg: #903e04;
+}
+
+/* Dark Mode */
+.dark {
+  --bg-color: #1f2739;
+  --text-color: #bec7c5;
+  --primary-color: #2f3646;
+  --secondary-color: #94a3b8;
+  --border-color: #0fc2e2;
+  --hover-color: #172554;
+  --skills-bg: #374151;
+  --scroll: linear-gradient(
+    180deg,
+    rgba(4, 89, 84, 1) 0%,
+    rgba(51, 255, 243, 1) 82%
+  );
+  --card-border: #67e8f9;
+  --card-bg: #035960;
+}
+
+.bg-gradient-right {
+  background: linear-gradient(to right, var(--bg-color), transparent);
+}
+.bg-gradient-left {
+  background: linear-gradient(to left, var(--bg-color), transparent);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--scroll);
+}
+
+.card-bg {
+  background-color: var(--card-bg);
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.skills-border {
+  border-color: var(--border-color);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--bebas-neue), sans-serif;
+}
+
+.about-text {
+  font-family: var(--font-roboto), sans-serif;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(-200px) rotate(0deg); /* Startposition: över skärmen */
+  }
+  30% {
+    transform: translateY(0px) rotate(15deg); /* Faller nedåt och svänger lite åt höger */
+  }
+  50% {
+    transform: translateY(50px) rotate(-10deg); /* Fall och sväng åt vänster */
+  }
+  70% {
+    transform: translateY(0px) rotate(5deg); /* När det når botten, svänger tillbaka */
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg); /* Stannar och är på sin slutposition */
+  }
+}
+
+.float {
+  animation: floating 5s ease-in-out forwards;
+  transform-style: preserve-3d;
+}
+
+.animate-scroll {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.animate-marquee-left {
+  animation: marquee-left 30s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 30s linear infinite;
+}
+
+/* SKILLS */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-container1,
+.scroll-container2 {
+  display: flex;
+  width: max-content;
+  animation: scroll 110s linear infinite;
+}
+
+.scroll-container2 {
+  animation-direction: reverse;
+}
+
+.hover-pause:hover .scroll-container1,
+.hover-pause:hover .scroll-container2 {
+  animation-play-state: paused;
+}
