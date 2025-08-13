@@ -9,7 +9,7 @@ const projects = [
     imageSrc: "/planet1.jpg",
     title: " Chase the Rabbit🐉",
     text: "This is a snake inspired desktop game. Collect points, unlock characters, and set new records.",
-    gitHubLink: "https://github.com/Dantilldev/chase-the-rabbit",
+
     liveLink: "https://chase-the-rabbit-yvfw.vercel.app/",
     techStack: ["HTML5", "TailwindCSS", "JavaScript", "React", "Next.js"],
   },
@@ -25,7 +25,7 @@ const projects = [
     imageSrc: "/planet3.jpg",
     title: "Todo App 📋",
     text: "A simple todo app built with Vite, React, and TailwindCSS, focusing on implementing CRUD operations (Create, Read, Update, Delete).",
-    gitHubLink: "https://github.com/Dantilldev/workshop-todoApp",
+
     liveLink: "https://workshop-todo-app.vercel.app/",
     techStack: ["Vite", "TailwindCSS", "CRUD"],
   },
@@ -33,7 +33,7 @@ const projects = [
     imageSrc: "/planet4.jpg",
     title: "Pokémon 👾",
     text: "Built with Next.js in a team project, this Pokédex lets users explore Pokémons, search by name or ID(max1000), and bookmark favorites. I worked on the Pokémon details, front page, and contributed to the Context API for data management.",
-    gitHubLink: "https://github.com/Dantilldev/chas_pokemon-main",
+
     liveLink: "https://chas-pokemon-main.vercel.app/",
     techStack: [
       "Next.js",
@@ -53,12 +53,11 @@ export default function HomePage() {
         <section className="flex flex-col gap-5 mb-20">
           <h1 className="text-4xl font-semibold">About Me</h1>
           <p className="text-lg ">
-            A frontend developer who creates web and mobile apps with some
-            backend capability. Currently studying at Chas Academy in Stockholm
-            to improve my skills. I am a motivated and curious problem-solver
-            who enjoys working in teams to tackle challenges and create
-            solutions. When I am not coding, I practice Brazilian Jiu-Jitsu
-            which helps me stay focused and motivated as I grow as a developer.
+            Hi, my name is Mustaf. I am a frontend developer who creates web and
+            mobile apps with some backend capability. Currently, I am studying
+            at Chas Academy in Stockholm to sharpen my skills. I am a motivated
+            and curious problem-solver who enjoys working in teams to tackle
+            challenges and build solutions.
           </p>
         </section>
 
@@ -76,7 +75,6 @@ export default function HomePage() {
                 title={project.title}
                 text={project.text}
                 techStack={project.techStack}
-                gitHubLink={project.gitHubLink}
                 liveLink={project.liveLink}
               />
             ))}
@@ -88,7 +86,7 @@ export default function HomePage() {
           <section className="flex flex-col items-center gap-5 mb-10 w-[600px] p-4 ">
             <h1 className="text-4xl font-semibold py-2">Let's Connect</h1>
 
-            <a href="mailto:daniel.tilleria@hotmail.com">
+            <a href="mailto:Mustaf.h10@outlook.com">
               <button className="relative border-2 py-3 px-5 h-52 w-52 rounded-full group transition-all duration-600 transform hover:scale-75">
                 <span className="relative z-10">Write a message</span>
               </button>

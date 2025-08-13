@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className=" flex justify-center items-center py-4 w-full ">
       <small className="text-center text-sm secondary-color">
-        <p>&copy; {year} | By Daniel</p>
+        <p>&copy; {year} | By Mustaf</p>
       </small>
     </footer>
   );

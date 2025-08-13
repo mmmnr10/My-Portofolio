@@ -1,21 +1,21 @@
 import React from "react";
-import {IoLocationOutline, IoCallOutline} from "react-icons/io5";
-import {MdOutlineEmail} from "react-icons/md";
-import {LuSun, LuMoon} from "react-icons/lu";
-import {CiLinkedin} from "react-icons/ci";
-import {VscGithubAlt} from "react-icons/vsc";
-import {SiReaddotcv} from "react-icons/si";
-import {useState} from "react";
-import {motion} from "framer-motion";
-import {IoMoon} from "react-icons/io5";
+import { IoLocationOutline, IoCallOutline } from "react-icons/io5";
+import { MdOutlineEmail } from "react-icons/md";
+import { LuSun, LuMoon } from "react-icons/lu";
+import { CiLinkedin } from "react-icons/ci";
+import { VscGithubAlt } from "react-icons/vsc";
+import { SiReaddotcv } from "react-icons/si";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { IoMoon } from "react-icons/io5";
 
 const hobbies = [
-  "Brazilian Jiu-Jitsu",
-  "Climbing",
+  "Boxning",
+  "Go-Kart",
   "Gaming",
   "Music",
   "Programming",
-  "Nature",
+  "Soccer",
   "Sports",
 ];
 
@@ -23,62 +23,50 @@ const education = [
   {
     title: "Frontend Developer",
     school: "Chas Academy",
-    year: "2024-",
+    year: "2024-2026",
   },
   {
-    title: "Webb Utveckling",
-    school: "Åsö Gymnasium",
-    year: "2023",
-  },
-  {
-    title: "Programering 1 (Javascript)",
-    school: "Åsö Gymnasium",
+    title: "Programmering 1",
+    school: "Jensen Komvux",
     year: "2023",
   },
 ];
 
-export default function HeaderLeft({darkMode, toggleDarkMode}) {
+export default function HeaderLeft({ darkMode, toggleDarkMode }) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [showTooltip2, setShowTooltip2] = useState(false);
   const [showTooltip3, setShowTooltip3] = useState(false);
 
   function handleCopyEmail() {
-    const email = "daniel.tilleria@hotmail.com";
+    const email = "mustaf.h10@outlook.com";
     navigator.clipboard.writeText(email);
-  }
-
-  function handleDownload() {
-    const link = document.createElement("a"); // skapar en länk
-    link.href = "/DanielTilleria.pdf"; // sätter länken till CV:et
-    link.download = "Daniel Tilleria.pdf"; // sätter namnet på filen som ska laddas ner
-    link.click();
   }
 
   return (
     <motion.div
-      initial={{opacity: 0, x: -20}}
-      animate={{opacity: 1, x: 0}}
-      transition={{delay: 0.2, duration: 0.8}}
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.2, duration: 0.8 }}
       className="flex-1 min-h-screen p-10 relative lg:border-r "
     >
       <div className="flex flex-col gap-5">
         <div className="flex flex-col items-center justify-center gap-5">
           <div className="perspective-3d">
             <img
-              src="/me.jpeg"
-              alt="It's me Daniel"
+              src="/Mustaf.jpeg"
+              alt="It's me Mustaf"
               className="w-auto h-48 rounded-full object-cover border-4 float"
             />
           </div>
 
           <div className="text-center space-y-1">
             <h1 className="text-4xl font-extralight">
-              Daniel <span className="font-semibold">Tilleria</span>
+              Mustaf <span className="font-semibold">A</span>
             </h1>
             <h3 className="text-lg">Web Developer</h3>
           </div>
           <motion.button
-            whileTap={{scale: 0.6}}
+            whileTap={{ scale: 0.6 }}
             className="absolute top-10 right-10"
             onClick={toggleDarkMode}
           >
@@ -108,7 +96,7 @@ export default function HeaderLeft({darkMode, toggleDarkMode}) {
               whileHover={{
                 y: -2,
                 scale: 1.05,
-                transition: {type: "spring", stiffness: 300, damping: 10},
+                transition: { type: "spring", stiffness: 300, damping: 10 },
               }}
               className="flex items-center gap-2"
             >
@@ -120,7 +108,7 @@ export default function HeaderLeft({darkMode, toggleDarkMode}) {
               >
                 {" "}
                 <MdOutlineEmail className="text-2xl " />
-                daniel.tilleria@hotmail.com
+                mustaf.h10@outlook.com
               </button>
             </motion.li>
             {showTooltip3 && (
@@ -135,15 +123,15 @@ export default function HeaderLeft({darkMode, toggleDarkMode}) {
               whileHover={{
                 y: -2,
                 scale: 1.05,
-                transition: {type: "spring", stiffness: 300, damping: 10},
+                transition: { type: "spring", stiffness: 300, damping: 10 },
               }}
               className="flex items-center gap-2"
               onMouseEnter={() => setShowTooltip3(true)}
               onMouseLeave={() => setShowTooltip3(false)}
             >
               <IoCallOutline className="text-2xl" />
-              <a href="tel:0760784669" className="text-lg">
-                076 078 46 69
+              <a href="tel:0762665179" className="text-lg">
+                0762665179
               </a>
             </motion.li>{" "}
             {showTooltip2 && (
@@ -158,7 +146,7 @@ export default function HeaderLeft({darkMode, toggleDarkMode}) {
               whileHover={{
                 y: -2, // Rörelse uppåt vid hover
                 scale: 1.05, // Gör länken lite större
-                transition: {type: "spring", stiffness: 300, damping: 10},
+                transition: { type: "spring", stiffness: 300, damping: 10 },
               }}
               className="flex items-center gap-2"
             >
@@ -177,28 +165,28 @@ export default function HeaderLeft({darkMode, toggleDarkMode}) {
         {/* Social */}
 
         <motion.div
-          initial={{opacity: 0, x: -20}}
-          animate={{opacity: 1, x: 0}}
-          transition={{delay: 0.2, duration: 0.8}}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
           className="flex flex-col items-start justify-start border-b p-5 gap-5"
         >
           <h1 className="font-semibold text-2xl ">SOCIAL</h1>
 
           <ul className="space-y-3">
             <motion.li
-              initial={{opacity: 0, x: -20}}
-              animate={{opacity: 1, x: 0}}
-              transition={{delay: 0.2, duration: 0.8}}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
               whileHover={{
                 y: -2, // Rörelse uppåt vid hover
                 scale: 1.05, // Gör länken lite större
-                transition: {type: "spring", stiffness: 300, damping: 10},
+                transition: { type: "spring", stiffness: 300, damping: 10 },
               }}
               className="flex items-center gap-2"
             >
               <VscGithubAlt className="text-2xl" />
               <a
-                href="https://github.com/Dantilldev"
+                href="https://github.com/mmmnr10"
                 target="_blank"
                 title="GitHub"
                 className="text-lg"
@@ -207,26 +195,16 @@ export default function HeaderLeft({darkMode, toggleDarkMode}) {
               </a>
             </motion.li>
             <motion.li
-              initial={{opacity: 0, x: -20}}
-              animate={{opacity: 1, x: 0}}
-              transition={{delay: 0.2, duration: 0.8}}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
               whileHover={{
                 y: -2, // Rörelse uppåt vid hover
                 scale: 1.05, // Gör länken lite större
-                transition: {type: "spring", stiffness: 300, damping: 10}, // Justera transitionen för mer "bounce"
+                transition: { type: "spring", stiffness: 300, damping: 10 }, // Justera transitionen för mer "bounce"
               }}
               className="flex items-center gap-2"
-            >
-              <CiLinkedin className="text-2xl" />
-              <a
-                href="https://www.linkedin.com/in/daniel-tilleria-17a0b9259/"
-                target="_blank"
-                title="Linkedin"
-                className="text-lg"
-              >
-                Linkedin
-              </a>
-            </motion.li>
+            ></motion.li>
           </ul>
         </motion.div>
         {/* Education */}
@@ -237,9 +215,9 @@ export default function HeaderLeft({darkMode, toggleDarkMode}) {
               <motion.li
                 key={index}
                 className="relative flex flex-col gap-1 border-l p-6 before:absolute before:left-[-6px] before:top-1/2 before:h-3 before:w-3 before:-translate-y-1/2 before:rounded-full before:transform before:bg-[var(--text-color)]"
-                initial={{opacity: 0, x: -20}} // Initial position
-                animate={{opacity: 1, x: 0}} // Animate to final position
-                transition={{delay: index * 0.2, duration: 0.8}} // Delay
+                initial={{ opacity: 0, x: -20 }} // Initial position
+                animate={{ opacity: 1, x: 0 }} // Animate to final position
+                transition={{ delay: index * 0.2, duration: 0.8 }} // Delay
               >
                 <span className="font-semibold md:text-lg">{item.title}</span>
                 <span className="font-light">{item.school}</span>
@@ -266,7 +244,7 @@ export default function HeaderLeft({darkMode, toggleDarkMode}) {
           <ul className=" flex flex-col list-disc list-inside gap-2">
             <li>Swedish</li>
             <li>English</li>
-            <li>Spanish</li>
+            <li>Somali</li>
           </ul>
         </div>
       </div>
