@@ -9,7 +9,6 @@ const projects = [
     imageSrc: "/planet1.jpg",
     title: " Chase the Rabbit🐉",
     text: "This is a snake inspired desktop game. Collect points, unlock characters, and set new records.",
-
     liveLink: "https://chase-the-rabbit-yvfw.vercel.app/",
     techStack: ["HTML5", "TailwindCSS", "JavaScript", "React", "Next.js"],
   },
@@ -33,7 +32,6 @@ const projects = [
     imageSrc: "/planet4.jpg",
     title: "Pokémon 👾",
     text: "Built with Next.js in a team project, this Pokédex lets users explore Pokémons, search by name or ID(max1000), and bookmark favorites. I worked on the Pokémon details, front page, and contributed to the Context API for data management.",
-
     liveLink: "https://chas-pokemon-main.vercel.app/",
     techStack: [
       "Next.js",

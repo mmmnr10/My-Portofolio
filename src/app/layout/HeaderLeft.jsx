@@ -149,17 +149,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
                 transition: { type: "spring", stiffness: 300, damping: 10 },
               }}
               className="flex items-center gap-2"
-            >
-              <button
-                onClick={handleDownload}
-                onMouseEnter={() => setShowTooltip2(true)}
-                onMouseLeave={() => setShowTooltip2(false)}
-                className="text-lg flex items-center"
-              >
-                <SiReaddotcv className="text-2xl m-2" />
-                <span className="text-xl">CV</span>
-              </button>
-            </motion.li>
+            ></motion.li>
           </ul>
         </div>
         {/* Social */}

@@ -1,5 +1,5 @@
 import "./globals.css";
-import {Poppins, Bebas_Neue, Roboto} from "next/font/google";
+import { Poppins, Bebas_Neue, Roboto } from "next/font/google";
 
 const poppinsFont = Poppins({
   variable: "--font-poppins",
@@ -20,12 +20,12 @@ const robotoFont = Roboto({
 });
 
 export const metadata = {
-  title: "Daniel portfolio",
+  title: "Mustaf portfolio",
   description:
     "I am a web developer based in Stockholm, passionate about bringing ideas to life, with an eye for details",
 };
 
-export default function RootLayout({children}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
