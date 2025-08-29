@@ -207,7 +207,7 @@ export default function HomePage() {
         <AnimateOnScrollSection>
           <section className="flex flex-col items-center gap-5">
             <h1 className="text-4xl font-semibold">Projects</h1>
-            <div className="grid md:grid-cols-2 2xl:grid-cols-4 gap-10 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 2xl:grid-cols-4 gap-10 mt-6">
               {projects.map((p, i) => (
                 <ProjectCard key={i} project={p} onClick={setSelectedProject} />
               ))}
