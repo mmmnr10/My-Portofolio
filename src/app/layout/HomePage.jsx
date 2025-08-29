@@ -62,18 +62,20 @@ const ProjectCard = ({ project, onClick }) => (
   >
     <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
       {/* Front */}
-      <div className="absolute inset-0 p-2 rounded-2xl shadow-md [backface-visibility:hidden] bg-white dark:bg-gray-800">
+      <div className="absolute inset-0 p-4 rounded-2xl shadow-xl [backface-visibility:hidden] bg-gradient-to-tr from-pink-300 via-purple-300 to-indigo-400 dark:from-pink-600 dark:via-purple-700 dark:to-indigo-900">
         <img
           src={project.imageSrc}
           alt={`${project.title} screenshot`}
-          className="w-full h-full object-cover rounded-lg"
+          className="w-full h-full object-cover rounded-lg shadow-md border-4 border-white"
         />
       </div>
       {/* Back */}
-      <div className="absolute inset-0 flex flex-col justify-center p-6 rounded-2xl shadow-md [transform:rotateY(180deg)] [backface-visibility:hidden] bg-gray-100 dark:bg-gray-700">
-        <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-        <p>{project.text}</p>
-        <button className="mt-4 text-blue-600 dark:text-blue-400 hover:underline font-semibold">
+      <div className="absolute inset-0 flex flex-col justify-center p-6 rounded-2xl shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden] bg-gradient-to-br from-yellow-200 via-green-200 to-blue-200 dark:from-yellow-600 dark:via-green-700 dark:to-blue-700 text-gray-900 dark:text-gray-100">
+        <h3 className="text-2xl font-extrabold mb-2 drop-shadow-md">
+          {project.title}
+        </h3>
+        <p className="font-semibold">{project.text}</p>
+        <button className="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full font-semibold shadow-lg transition">
           Läs mer →
         </button>
       </div>
@@ -95,21 +97,55 @@ const SkillsSection = () => {
     { title: "Backend", items: ["API", "Databases"] },
     { title: "Tools", items: ["Git", "GitHub", "Vercel", "npm"] },
   ];
+
+  // State to track which card(s) are zoomed in
+  // För enkelhetens skull bara en i taget zoomad in:
+  const [zoomedIndex, setZoomedIndex] = useState(null);
+
+  // Hantera klick på card: toggle zoom
+  const handleClick = (index) => {
+    if (zoomedIndex === index) {
+      setZoomedIndex(null); // zooma ut om klickar på samma igen
+    } else {
+      setZoomedIndex(index); // zooma in på klickad
+    }
+  };
+
   return (
-    <section className="flex flex-col gap-5 mt-20 mb-20">
-      <h2 className="text-4xl font-semibold">Skills</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section className="flex flex-col gap-8 mt-20 mb-20">
+      <h2 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600">
+        Skills
+      </h2>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
         {skills.map((cat, i) => (
           <div
             key={i}
-            className="p-6 rounded-xl shadow-lg bg-gray-100 dark:bg-gray-800"
+            onClick={() => handleClick(i)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                handleClick(i);
+              }
+            }}
+            tabIndex={0}
+            role="button"
+            aria-pressed={zoomedIndex === i}
+            className={`
+              p-8 rounded-3xl shadow-2xl cursor-pointer
+              bg-gradient-to-tr from-white to-indigo-50
+              dark:from-gray-700 dark:to-gray-900
+              transform transition-transform duration-300 ease-in-out
+              focus:outline-none focus:ring-4 focus:ring-indigo-400
+              ${zoomedIndex === i ? "scale-105" : "hover:scale-105"}
+            `}
           >
-            <h3 className="text-2xl font-semibold mb-3">{cat.title}</h3>
-            <ul className="flex flex-wrap gap-2">
+            <h3 className="text-3xl font-bold mb-5 text-indigo-700 dark:text-indigo-300">
+              {cat.title}
+            </h3>
+            <ul className="flex flex-wrap gap-3">
               {cat.items.map((s, j) => (
                 <li
                   key={j}
-                  className="bg-gray-300 dark:bg-gray-600 px-3 py-1 rounded-full text-sm font-semibold"
+                  className="bg-indigo-200 dark:bg-indigo-600 text-indigo-900 dark:text-indigo-100 px-4 py-2 rounded-full text-base font-semibold shadow"
                 >
                   {s}
                 </li>
@@ -157,13 +193,12 @@ export default function HomePage() {
   const handleBack = () => setSelectedProject(null);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <main className="flex flex-col p-10">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-100 dark:from-gray-900 dark:via-indigo-900 dark:to-purple-900 text-gray-900 dark:text-gray-100 font-sans">
+      <main className="flex flex-col p-10 max-w-7xl mx-auto">
         {/* About Me */}
         <AnimateOnScrollSection>
-          <section className="mb-20">
-            <h1 className="text-4xl font-semibold">About Me</h1>
-            <p className="text-lg mt-3">
+          <section className="mb-20 text-center">
+            <p className="text-xl mt-5 max-w-3xl mx-auto leading-relaxed">
               Hi, my name is Mustaf. I am a frontend developer who creates web
               and mobile apps. Currently studying at Chas Academy in Stockholm.
               Motivated, curious and enjoy team work.
@@ -174,10 +209,10 @@ export default function HomePage() {
         {/* Project details */}
         {selectedProject && (
           <AnimateOnScrollSection>
-            <div className="max-w-4xl w-full p-8 rounded-3xl shadow-2xl bg-white dark:bg-gray-800 mb-8">
+            <div className="max-w-4xl w-full p-8 rounded-3xl shadow-2xl bg-white dark:bg-gray-800 mb-12 mx-auto">
               <button
                 onClick={handleBack}
-                className="mb-6 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                className="mb-6 text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
               >
                 ← Back
               </button>
@@ -195,7 +230,7 @@ export default function HomePage() {
                 href={selectedProject.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700"
+                className="mt-6 inline-block bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 shadow-lg transition"
               >
                 Live Demo
               </a>
@@ -206,8 +241,10 @@ export default function HomePage() {
         {/* Projects */}
         <AnimateOnScrollSection>
           <section className="flex flex-col items-center gap-5">
-            <h1 className="text-4xl font-semibold">Projects</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 2xl:grid-cols-4 gap-6 mt-6 w-full">
+            <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-700">
+              Projects
+            </h1>
+            <div className="grid md:grid-cols-2 2xl:grid-cols-4 gap-10 mt-6 w-full">
               {projects.map((p, i) => (
                 <ProjectCard key={i} project={p} onClick={setSelectedProject} />
               ))}
@@ -223,9 +260,11 @@ export default function HomePage() {
         {/* Connect */}
         <AnimateOnScrollSection>
           <section className="flex flex-col items-center gap-5 mb-10">
-            <h1 className="text-4xl font-semibold">Let's Connect</h1>
+            <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-700">
+              Let's Connect
+            </h1>
             <a href="mailto:Mustaf.h10@outlook.com">
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition">
+              <button className="bg-indigo-600 text-white px-10 py-4 rounded-full hover:bg-indigo-700 transition shadow-lg">
                 Write a message
               </button>
             </a>
@@ -235,16 +274,18 @@ export default function HomePage() {
         {/* Reference */}
         <AnimateOnScrollSection>
           <section className="flex flex-col items-center gap-5">
-            <h1 className="text-4xl font-semibold">Reference</h1>
-            <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
-              <p>
+            <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-700">
+              Reference
+            </h1>
+            <div className="bg-gradient-to-tr from-indigo-200 via-purple-200 to-pink-200 p-8 rounded-3xl shadow-xl text-center max-w-md">
+              <p className="mb-2 font-semibold text-indigo-900 dark:text-indigo-200">
                 <strong>Person:</strong> Ulf Sandström
               </p>
-              <p>
+              <p className="mb-2">
                 <strong>Email:</strong>{" "}
                 <a
                   href="mailto:ulf@sandstrom.se"
-                  className="underline text-blue-600 dark:text-blue-400"
+                  className="underline text-indigo-700 dark:text-indigo-300"
                 >
                   ulf@sandstrom.se
                 </a>
@@ -253,7 +294,7 @@ export default function HomePage() {
                 <strong>Phone:</strong>{" "}
                 <a
                   href="tel:+46704888418"
-                  className="underline text-blue-600 dark:text-blue-400"
+                  className="underline text-indigo-700 dark:text-indigo-300"
                 >
                   070-488 84 18
                 </a>
