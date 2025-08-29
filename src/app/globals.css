@@ -23,34 +23,33 @@ body {
 
 /* Light Mode */
 :root {
-  --bg-color: #eff1f0;
-  --text-color: #863e14;
-  --primary-color: #2b3546;
-  --secondary-color: #64748b;
-  --border-color: #903e04;
-  --hover-color: #1e3a8a;
-  --skills-bg: #bda371;
-  --card-border: #903e04;
-  /* --scroll: red; */
-  --card-bg: #903e04;
+  --bg-color: #f5f7fa; /* Ljus bakgrund */
+  --text-color: #1a1a1a; /* Nästan svart text */
+  --primary-color: #005f73; /* Djup teal */
+  --secondary-color: #94d2bd; /* Ljusgrön/blå */
+  --border-color: #0a9396; /* Turkosgrön kant */
+  --hover-color: #001f54; /* Mörk blå för hover */
+  --skills-bg: #e9d8a6; /* Sandgul */
+  --card-border: #0a9396; /* Samma som border-color */
+  --card-bg: #94d2bd; /* Pastellgrön/blå */
 }
 
 /* Dark Mode */
 .dark {
-  --bg-color: #1f2739;
-  --text-color: #bec7c5;
-  --primary-color: #2f3646;
-  --secondary-color: #94a3b8;
-  --border-color: #0fc2e2;
-  --hover-color: #172554;
-  --skills-bg: #374151;
+  --bg-color: #0d1b2a; /* Mörk marinblå */
+  --text-color: #e0e1dd; /* Ljusgrå text */
+  --primary-color: #1b263b; /* Djup marinblå */
+  --secondary-color: #778da9; /* Stålblå */
+  --border-color: #e9d8a6; /* Sandgul */
+  --hover-color: #415a77; /* Dämpad blå */
+  --skills-bg: #1b263b; /* Samma som primary */
   --scroll: linear-gradient(
     180deg,
-    rgba(4, 89, 84, 1) 0%,
-    rgba(51, 255, 243, 1) 82%
+    rgba(10, 147, 150, 1) 0%,
+    rgba(148, 210, 189, 1) 82%
   );
-  --card-border: #67e8f9;
-  --card-bg: #035960;
+  --card-border: #94d2bd; /* Pastellgrön/blå */
+  --card-bg: #1b263b; /* Djup marinblå */
 }
 
 .bg-gradient-right {
@@ -103,19 +102,19 @@ button {
 
 @keyframes floating {
   0% {
-    transform: translateY(-200px) rotate(0deg); /* Startposition: över skärmen */
+    transform: translateY(-200px) rotate(0deg);
   }
   30% {
-    transform: translateY(0px) rotate(15deg); /* Faller nedåt och svänger lite åt höger */
+    transform: translateY(0px) rotate(15deg);
   }
   50% {
-    transform: translateY(50px) rotate(-10deg); /* Fall och sväng åt vänster */
+    transform: translateY(50px) rotate(-10deg);
   }
   70% {
-    transform: translateY(0px) rotate(5deg); /* När det når botten, svänger tillbaka */
+    transform: translateY(0px) rotate(5deg);
   }
   100% {
-    transform: translateY(0px) rotate(0deg); /* Stannar och är på sin slutposition */
+    transform: translateY(0px) rotate(0deg);
   }
 }
 
