@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 
+// ---- PROJEKT ----
 const projects = [
   {
     title: "Chase the Rabbit 🐉",
@@ -54,7 +55,7 @@ const projects = [
   },
 ];
 
-// ---- CARD ----
+// ---- KORT ----
 const ProjectCard = ({ project, onClick }) => (
   <div
     className="w-full h-80 max-w-md mx-auto group [perspective:1000px] cursor-pointer"
@@ -62,20 +63,18 @@ const ProjectCard = ({ project, onClick }) => (
   >
     <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
       {/* Front */}
-      <div className="absolute inset-0 p-4 rounded-2xl shadow-xl [backface-visibility:hidden] bg-gradient-to-tr from-pink-300 via-purple-300 to-indigo-400 dark:from-pink-600 dark:via-purple-700 dark:to-indigo-900">
+      <div className="absolute inset-0 p-4 rounded-2xl shadow-xl [backface-visibility:hidden] bg-white dark:bg-gray-800 border-2 border-indigo-400">
         <img
           src={project.imageSrc}
           alt={`${project.title} screenshot`}
-          className="w-full h-full object-cover rounded-lg shadow-md border-4 border-white"
+          className="w-full h-full object-cover rounded-lg shadow-md"
         />
       </div>
       {/* Back */}
-      <div className="absolute inset-0 flex flex-col justify-center p-6 rounded-2xl shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden] bg-gradient-to-br from-yellow-200 via-green-200 to-blue-200 dark:from-yellow-600 dark:via-green-700 dark:to-blue-700 text-gray-900 dark:text-gray-100">
-        <h3 className="text-2xl font-extrabold mb-2 drop-shadow-md">
-          {project.title}
-        </h3>
-        <p className="font-semibold">{project.text}</p>
-        <button className="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full font-semibold shadow-lg transition">
+      <div className="absolute inset-0 flex flex-col justify-center p-6 rounded-2xl shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden] bg-indigo-50 dark:bg-gray-700 text-gray-900 dark:text-white border-2 border-indigo-300">
+        <h3 className="text-2xl font-extrabold mb-2">{project.title}</h3>
+        <p>{project.text}</p>
+        <button className="mt-4 self-start bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-full transition">
           Läs mer →
         </button>
       </div>
@@ -95,57 +94,35 @@ const SkillsSection = () => {
       items: ["React", "Next.js", "Vite", "TailwindCSS", "React Native"],
     },
     { title: "Backend", items: ["API", "Databases"] },
-    { title: "Tools", items: ["Git", "GitHub", "Vercel", "npm"] },
+    { title: "Tools", items: ["Git", "GitHub", "Vercel", "Npm"] },
   ];
-
-  // State to track which card(s) are zoomed in
-  // För enkelhetens skull bara en i taget zoomad in:
   const [zoomedIndex, setZoomedIndex] = useState(null);
-
-  // Hantera klick på card: toggle zoom
   const handleClick = (index) => {
-    if (zoomedIndex === index) {
-      setZoomedIndex(null); // zooma ut om klickar på samma igen
-    } else {
-      setZoomedIndex(index); // zooma in på klickad
-    }
+    setZoomedIndex(zoomedIndex === index ? null : index);
   };
 
   return (
     <section className="flex flex-col gap-8 mt-20 mb-20">
-      <h2 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600">
-        Skills
-      </h2>
+      <h2 className="text-5xl font-extrabold text-indigo-600">Skills</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
         {skills.map((cat, i) => (
           <div
             key={i}
             onClick={() => handleClick(i)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleClick(i);
-              }
-            }}
-            tabIndex={0}
-            role="button"
-            aria-pressed={zoomedIndex === i}
             className={`
-              p-8 rounded-3xl shadow-2xl cursor-pointer
-              bg-gradient-to-tr from-white to-indigo-50
-              dark:from-gray-700 dark:to-gray-900
-              transform transition-transform duration-300 ease-in-out
-              focus:outline-none focus:ring-4 focus:ring-indigo-400
+              p-8 rounded-3xl shadow-xl cursor-pointer border-2 border-indigo-300
+              bg-white dark:bg-gray-800 transition-transform duration-300
               ${zoomedIndex === i ? "scale-105" : "hover:scale-105"}
             `}
           >
-            <h3 className="text-3xl font-bold mb-5 text-indigo-700 dark:text-indigo-300">
+            <h3 className="text-3xl font-bold mb-5 text-indigo-500">
               {cat.title}
             </h3>
             <ul className="flex flex-wrap gap-3">
               {cat.items.map((s, j) => (
                 <li
                   key={j}
-                  className="bg-indigo-200 dark:bg-indigo-600 text-indigo-900 dark:text-indigo-100 px-4 py-2 rounded-full text-base font-semibold shadow"
+                  className="bg-cyan-100 dark:bg-cyan-700 text-cyan-800 dark:text-white px-4 py-2 rounded-full text-sm font-semibold shadow"
                 >
                   {s}
                 </li>
@@ -158,7 +135,7 @@ const SkillsSection = () => {
   );
 };
 
-// ---- ANIMATION ----
+// ---- ANIMERING ----
 const AnimateOnScrollSection = ({ children, className }) => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
@@ -187,15 +164,15 @@ const AnimateOnScrollSection = ({ children, className }) => {
   );
 };
 
-// ---- PAGE ----
+// ---- SIDAN ----
 export default function HomePage() {
   const [selectedProject, setSelectedProject] = useState(null);
   const handleBack = () => setSelectedProject(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-100 dark:from-gray-900 dark:via-indigo-900 dark:to-purple-900 text-gray-900 dark:text-gray-100 font-sans">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-sans">
       <main className="flex flex-col p-10 max-w-7xl mx-auto">
-        {/* About Me */}
+        {/* About */}
         <AnimateOnScrollSection>
           <section className="mb-20 text-center">
             <p className="text-xl mt-5 max-w-3xl mx-auto leading-relaxed">
@@ -206,13 +183,13 @@ export default function HomePage() {
           </section>
         </AnimateOnScrollSection>
 
-        {/* Project details */}
+        {/* Project Details */}
         {selectedProject && (
           <AnimateOnScrollSection>
-            <div className="max-w-4xl w-full p-8 rounded-3xl shadow-2xl bg-white dark:bg-gray-800 mb-12 mx-auto">
+            <div className="max-w-4xl w-full p-8 rounded-3xl shadow-xl bg-white dark:bg-gray-800 mb-12 mx-auto border-2 border-indigo-300">
               <button
                 onClick={handleBack}
-                className="mb-6 text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
+                className="mb-6 text-sm text-indigo-600 hover:underline"
               >
                 ← Back
               </button>
@@ -230,7 +207,7 @@ export default function HomePage() {
                 href={selectedProject.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-block bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 shadow-lg transition"
+                className="mt-6 inline-block bg-indigo-500 text-white px-6 py-3 rounded-full hover:bg-indigo-600 shadow transition"
               >
                 Live Demo
               </a>
@@ -241,7 +218,7 @@ export default function HomePage() {
         {/* Projects */}
         <AnimateOnScrollSection>
           <section className="flex flex-col items-center gap-5">
-            <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-700">
+            <h1 className="text-5xl font-extrabold text-indigo-600">
               Projects
             </h1>
             <div className="grid md:grid-cols-2 2xl:grid-cols-4 gap-10 mt-6 w-full">
@@ -260,11 +237,11 @@ export default function HomePage() {
         {/* Connect */}
         <AnimateOnScrollSection>
           <section className="flex flex-col items-center gap-5 mb-10">
-            <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-700">
+            <h1 className="text-5xl font-extrabold text-indigo-600">
               Let's Connect
             </h1>
             <a href="mailto:Mustaf.h10@outlook.com">
-              <button className="bg-indigo-600 text-white px-10 py-4 rounded-full hover:bg-indigo-700 transition shadow-lg">
+              <button className="bg-indigo-500 text-white px-10 py-4 rounded-full hover:bg-indigo-600 transition shadow-lg">
                 Write a message
               </button>
             </a>
@@ -274,18 +251,18 @@ export default function HomePage() {
         {/* Reference */}
         <AnimateOnScrollSection>
           <section className="flex flex-col items-center gap-5">
-            <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-700">
+            <h1 className="text-5xl font-extrabold text-indigo-600">
               Reference
             </h1>
-            <div className="bg-gradient-to-tr from-indigo-200 via-purple-200 to-pink-200 p-8 rounded-3xl shadow-xl text-center max-w-md">
-              <p className="mb-2 font-semibold text-indigo-900 dark:text-indigo-200">
+            <div className="bg-indigo-500 dark:bg-gray-800 text-white p-8 rounded-3xl shadow-xl text-center max-w-md border-2 border-indigo-300">
+              <p className="mb-2 font-semibold">
                 <strong>Person:</strong> Ulf Sandström
               </p>
               <p className="mb-2">
                 <strong>Email:</strong>{" "}
                 <a
                   href="mailto:ulf@sandstrom.se"
-                  className="underline text-indigo-700 dark:text-indigo-300"
+                  className="underline hover:text-white"
                 >
                   ulf@sandstrom.se
                 </a>
@@ -294,7 +271,7 @@ export default function HomePage() {
                 <strong>Phone:</strong>{" "}
                 <a
                   href="tel:+46704888418"
-                  className="underline text-indigo-700 dark:text-indigo-300"
+                  className="underline hover:text-white"
                 >
                   070-488 84 18
                 </a>

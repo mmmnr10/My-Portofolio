@@ -3,6 +3,7 @@
 html {
   scrollbar-width: normal;
 }
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -10,10 +11,6 @@ html {
 ::-webkit-scrollbar-thumb {
   background-color: var(--secondary-color);
   border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
 }
 
 body {
@@ -25,35 +22,32 @@ body {
   color: var(--text-color);
 }
 
-/* Light Mode */
+/* 🌞 Light Mode */
 :root {
-  --bg-color: #f5f7fa; /* Ljus bakgrund */
-  --text-color: #1a1a1a; /* Nästan svart text */
-  --primary-color: #005f73; /* Djup teal */
-  --secondary-color: #94d2bd; /* Ljusgrön/blå */
-  --border-color: #0a9396; /* Turkosgrön kant */
-  --hover-color: #001f54; /* Mörk blå för hover */
-  --skills-bg: #e9d8a6; /* Sandgul */
-  --card-border: #0a9396; /* Samma som border-color */
-  --card-bg: #94d2bd; /* Pastellgrön/blå */
+  --bg-color: #fffdfc; /* Mjuk vit */
+  --text-color: #1e1e1e; /* Nästan svart */
+  --primary-color: #e63946; /* Röd accent */
+  --secondary-color: #ffb4a2; /* Ljus korall */
+  --border-color: #f77f00; /* Orangegul för detaljer */
+  --hover-color: #e76f51; /* Dämpad orange/röd för hover */
+  --skills-bg: #f1faee; /* Ljus mintvit bakgrund */
+  --card-border: #f77f00; /* Orange border */
+  --card-bg: #ffe8d6; /* Ljus beige/pastellorange */
 }
 
-/* Dark Mode */
+/* 🌚 Dark Mode */
 .dark {
-  --bg-color: #0d1b2a; /* Mörk marinblå */
-  --text-color: #e0e1dd; /* Ljusgrå text */
-  --primary-color: #1b263b; /* Djup marinblå */
-  --secondary-color: #778da9; /* Stålblå */
-  --border-color: #e9d8a6; /* Sandgul */
-  --hover-color: #415a77; /* Dämpad blå */
-  --skills-bg: #1b263b; /* Samma som primary */
-  --scroll: linear-gradient(
-    180deg,
-    rgba(10, 147, 150, 1) 0%,
-    rgba(148, 210, 189, 1) 82%
-  );
-  --card-border: #94d2bd; /* Pastellgrön/blå */
-  --card-bg: #1b263b; /* Djup marinblå */
+  --bg-color: #1a1a2e; /* Mörk marinblå */
+  --text-color: #f8f9fa; /* Ljus text */
+  --primary-color: #ff6b6b; /* Ljus röd/korall */
+  --secondary-color: #ffd6a5; /* Ljusorange */
+  --border-color: #ff7f50; /* Coral */
+  --hover-color: #ff9770; /* Ljusröd/orange */
+  --skills-bg: #2a2a40; /* Mörkblå för kort */
+  --card-border: #ff9770;
+  --card-bg: #2f2f4f;
+
+  --scroll: linear-gradient(180deg, #ff6b6b 0%, #ffd6a5 80%);
 }
 
 .bg-gradient-right {
@@ -95,6 +89,7 @@ button {
   cursor: pointer;
 }
 
+/* 🔄 Animationer */
 @keyframes scroll {
   from {
     transform: translateX(100%);
@@ -150,6 +145,7 @@ button {
     transform: translateX(100%);
   }
 }
+
 .animate-marquee-left {
   animation: marquee-left 30s linear infinite;
 }
@@ -158,16 +154,7 @@ button {
   animation: marquee-right 30s linear infinite;
 }
 
-/* SKILLS */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
+/* 🔁 Skills-scroll */
 .scroll-container1,
 .scroll-container2 {
   display: flex;
