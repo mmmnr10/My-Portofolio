@@ -37,17 +37,17 @@ body {
 
 /* 🌚 Dark Mode */
 .dark {
-  --bg-color: #1a1a2e; /* Mörk marinblå */
+  --bg-color: #2c3e50; /* Ny marinblå/grå färg */
   --text-color: #f8f9fa; /* Ljus text */
-  --primary-color: #ff6b6b; /* Ljus röd/korall */
-  --secondary-color: #ffd6a5; /* Ljusorange */
-  --border-color: #ff7f50; /* Coral */
-  --hover-color: #ff9770; /* Ljusröd/orange */
-  --skills-bg: #2a2a40; /* Mörkblå för kort */
-  --card-border: #ff9770;
-  --card-bg: #2f2f4f;
+  --primary-color: #4a90e2; /* Ljusare blå ton */
+  --secondary-color: #92dff3; /* Ljus turkos */
+  --border-color: #5d9cec; /* Ljusare blå */
+  --hover-color: #64b5f6; /* Ljusare blå för hover */
+  --skills-bg: #34495e; /* Mörkare gråblå för kort */
+  --card-border: #5d9cec;
+  --card-bg: #3d516d;
 
-  --scroll: linear-gradient(180deg, #ff6b6b 0%, #ffd6a5 80%);
+  --scroll: linear-gradient(180deg, #4a90e2 0%, #92dff3 80%);
 }
 
 .bg-gradient-right {

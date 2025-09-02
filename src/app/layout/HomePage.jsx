@@ -63,7 +63,7 @@ const ProjectCard = ({ project, onClick }) => (
   >
     <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
       {/* Front */}
-      <div className="absolute inset-0 p-4 rounded-2xl shadow-xl [backface-visibility:hidden] bg-white dark:bg-gray-800 border-2 border-indigo-400">
+      <div className="absolute inset-0 p-4 rounded-2xl shadow-xl [backface-visibility:hidden] bg-white dark:bg-gray-700 border-2 border-indigo-400">
         <img
           src={project.imageSrc}
           alt={`${project.title} screenshot`}
@@ -71,7 +71,7 @@ const ProjectCard = ({ project, onClick }) => (
         />
       </div>
       {/* Back */}
-      <div className="absolute inset-0 flex flex-col justify-center p-6 rounded-2xl shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden] bg-indigo-50 dark:bg-gray-700 text-gray-900 dark:text-white border-2 border-indigo-300">
+      <div className="absolute inset-0 flex flex-col justify-center p-6 rounded-2xl shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden] bg-indigo-50 dark:bg-gray-600 text-gray-900 dark:text-white border-2 border-indigo-300">
         <h3 className="text-2xl font-extrabold mb-2">{project.title}</h3>
         <p>{project.text}</p>
         <button className="mt-4 self-start bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-full transition">
@@ -111,7 +111,7 @@ const SkillsSection = () => {
             onClick={() => handleClick(i)}
             className={`
               p-8 rounded-3xl shadow-xl cursor-pointer border-2 border-indigo-300
-              bg-white dark:bg-gray-800 transition-transform duration-300
+              bg-white dark:bg-gray-700 transition-transform duration-300
               ${zoomedIndex === i ? "scale-105" : "hover:scale-105"}
             `}
           >
@@ -170,7 +170,7 @@ export default function HomePage() {
   const handleBack = () => setSelectedProject(null);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-sans">
+    <div className="min-h-screen bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-sans">
       <main className="flex flex-col p-10 max-w-7xl mx-auto">
         {/* About */}
         <AnimateOnScrollSection>
@@ -186,7 +186,7 @@ export default function HomePage() {
         {/* Project Details */}
         {selectedProject && (
           <AnimateOnScrollSection>
-            <div className="max-w-4xl w-full p-8 rounded-3xl shadow-xl bg-white dark:bg-gray-800 mb-12 mx-auto border-2 border-indigo-300">
+            <div className="max-w-4xl w-full p-8 rounded-3xl shadow-xl bg-white dark:bg-gray-700 mb-12 mx-auto border-2 border-indigo-300">
               <button
                 onClick={handleBack}
                 className="mb-6 text-sm text-indigo-600 hover:underline"
@@ -254,7 +254,7 @@ export default function HomePage() {
             <h1 className="text-5xl font-extrabold text-indigo-600">
               Reference
             </h1>
-            <div className="bg-indigo-500 dark:bg-gray-800 text-white p-8 rounded-3xl shadow-xl text-center max-w-md border-2 border-indigo-300">
+            <div className="bg-indigo-500 dark:bg-gray-700 text-white p-8 rounded-3xl shadow-xl text-center max-w-md border-2 border-indigo-300">
               <p className="mb-2 font-semibold">
                 <strong>Person:</strong> Ulf Sandström
               </p>

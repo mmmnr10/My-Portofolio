@@ -42,7 +42,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.2, duration: 0.8 }}
-      className="flex-1 min-h-screen max-w-full p-6 sm:p-10 relative lg:border-r bg-white dark:bg-gray-900"
+      className="flex-1 min-h-screen max-w-full p-6 sm:p-10 relative lg:border-r bg-white dark:bg-gray-800"
     >
       <div className="flex flex-col gap-5 max-w-sm mx-auto sm:mx-0">
         <div className="flex flex-col items-center justify-center gap-5 relative">
