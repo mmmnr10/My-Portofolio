@@ -256,25 +256,15 @@ export default function HomePage() {
             </h1>
             <div className="bg-indigo-500 dark:bg-gray-700 text-white p-8 rounded-3xl shadow-xl text-center max-w-md border-2 border-indigo-300">
               <p className="mb-2 font-semibold">
-                <strong>Person:</strong> Ulf Sandström
+                <strong>Person:</strong>
               </p>
               <p className="mb-2">
                 <strong>Email:</strong>{" "}
-                <a
-                  href="mailto:ulf@sandstrom.se"
-                  className="underline hover:text-white"
-                >
-                  ulf@sandstrom.se
-                </a>
+                <a href="" className="underline hover:text-white"></a>
               </p>
               <p>
                 <strong>Phone:</strong>{" "}
-                <a
-                  href="tel:+46704888418"
-                  className="underline hover:text-white"
-                >
-                  070-488 84 18
-                </a>
+                <a href="" className="underline hover:text-white"></a>
               </p>
             </div>
           </section>
