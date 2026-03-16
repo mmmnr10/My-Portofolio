@@ -42,7 +42,8 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.2, duration: 0.8 }}
-      className="flex-1 min-h-screen max-w-full p-6 sm:p-10 relative lg:border-r bg-white dark:bg-gray-800"
+      className="flex-1 min-h-screen max-w-full p-6 sm:p-10 relative lg:border-r 
+                 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-gray-700"
     >
       <div className="flex flex-col gap-5 max-w-sm mx-auto sm:mx-0">
         <div className="flex flex-col items-center justify-center gap-5 relative">
@@ -50,7 +51,8 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
             <img
               src="/Mustaf.jpeg"
               alt="Mustaf portrait"
-              className="w-auto h-48 rounded-full object-cover border-4 float"
+              className="w-auto h-48 rounded-full object-cover border-4 
+                         border-gray-200 dark:border-gray-600 float"
             />
           </div>
 
@@ -68,14 +70,14 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
             whileTap={{ scale: 0.8 }}
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
-            className="absolute top-4 right-4 text-gray-700 dark:text-cyan-300 text-2xl cursor-pointer"
+            className="absolute top-4 right-4 text-gray-700 dark:text-gray-300 text-2xl cursor-pointer"
           >
             {darkMode ? <LuSun /> : <IoMoon />}
           </motion.button>
         </div>
 
         {/* Contact Section */}
-        <div className="border-b border-gray-300 dark:border-gray-700 p-5">
+        <div className="border-b border-gray-200 dark:border-gray-700 p-5">
           <ul className="space-y-4">
             <li className="flex items-center gap-3 text-gray-800 dark:text-gray-200">
               <IoLocationOutline className="text-2xl" />
@@ -95,7 +97,9 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
               </button>
 
               {showTooltipEmail && (
-                <span className="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-black text-white text-xs px-2 py-1 rounded-md whitespace-nowrap select-none pointer-events-none z-10">
+                <span className="absolute top-full left-1/2 -translate-x-1/2 mt-1 
+                                 bg-black text-white text-xs px-2 py-1 rounded-md whitespace-nowrap 
+                                 select-none pointer-events-none z-10">
                   Click to copy
                 </span>
               )}
@@ -112,7 +116,9 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
               </a>
 
               {showTooltipCall && (
-                <span className="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-black text-white text-xs px-2 py-1 rounded-md whitespace-nowrap select-none pointer-events-none z-10">
+                <span className="absolute top-full left-1/2 -translate-x-1/2 mt-1 
+                                 bg-black text-white text-xs px-2 py-1 rounded-md whitespace-nowrap 
+                                 select-none pointer-events-none z-10">
                   Click to call
                 </span>
               )}
@@ -125,7 +131,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="border-b border-gray-300 dark:border-gray-700 p-5 flex flex-col gap-5"
+          className="border-b border-gray-200 dark:border-gray-700 p-5 flex flex-col gap-5"
         >
           <h2 className="font-semibold text-2xl text-gray-900 dark:text-white">
             SOCIAL
@@ -154,7 +160,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
         </motion.div>
 
         {/* Education Section */}
-        <div className="border-b border-gray-300 dark:border-gray-700 p-5">
+        <div className="border-b border-gray-200 dark:border-gray-700 p-5">
           <h2 className="font-semibold text-2xl text-gray-900 dark:text-white mb-4">
             EDUCATION
           </h2>
@@ -162,7 +168,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
             {education.map((item, index) => (
               <motion.li
                 key={index}
-                className="relative flex flex-col gap-1 border-l-4 border-purple-600 pl-5"
+                className="relative flex flex-col gap-1 border-l-4 border-red-500 pl-5"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.8 }}
@@ -182,7 +188,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
         </div>
 
         {/* Hobbies Section */}
-        <div className="border-b border-gray-300 dark:border-gray-700 p-5">
+        <div className="border-b border-gray-200 dark:border-gray-700 p-5">
           <h2 className="font-semibold text-2xl text-gray-900 dark:text-white mb-4">
             HOBBIES
           </h2>
@@ -190,7 +196,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
             {hobbies.map((hobby, index) => (
               <li
                 key={index}
-                className="px-3 py-1 rounded-full bg-purple-600 text-white text-sm cursor-default select-none"
+                className="px-3 py-1 rounded-full bg-red-500 text-white text-sm cursor-default select-none"
               >
                 {hobby}
               </li>

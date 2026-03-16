@@ -24,30 +24,30 @@ body {
 
 /* 🌞 Light Mode */
 :root {
-  --bg-color: #fffdfc; /* Mjuk vit */
-  --text-color: #1e1e1e; /* Nästan svart */
-  --primary-color: #e63946; /* Röd accent */
-  --secondary-color: #ffb4a2; /* Ljus korall */
-  --border-color: #f77f00; /* Orangegul för detaljer */
-  --hover-color: #e76f51; /* Dämpad orange/röd för hover */
-  --skills-bg: #f1faee; /* Ljus mintvit bakgrund */
-  --card-border: #f77f00; /* Orange border */
-  --card-bg: #ffe8d6; /* Ljus beige/pastellorange */
+  --bg-color: #ffffff;          /* Ren vit */
+  --text-color: #1e1e1e;        /* Mörk text */
+  --primary-color: #e63946;     /* Röd accent */
+  --secondary-color: #f2b6ac;   /* Ljus korall (neutral, ej blå) */
+  --border-color: #e5e5e5;      /* Ljus grå border */
+  --hover-color: #d66a5c;       /* Dämpad röd/orange hover */
+  --skills-bg: #f7f7f7;         /* Ljus neutral bakgrund */
+  --card-border: #e5e5e5;       /* Ljus grå border */
+  --card-bg: #ffffff;           /* Vit card-bakgrund */
 }
 
-/* 🌚 Dark Mode */
+/* 🌚 Dark Mode (neutral, ingen blå) */
 .dark {
-  --bg-color: #2c3e50; /* Ny marinblå/grå färg */
-  --text-color: #f8f9fa; /* Ljus text */
-  --primary-color: #4a90e2; /* Ljusare blå ton */
-  --secondary-color: #92dff3; /* Ljus turkos */
-  --border-color: #5d9cec; /* Ljusare blå */
-  --hover-color: #64b5f6; /* Ljusare blå för hover */
-  --skills-bg: #34495e; /* Mörkare gråblå för kort */
-  --card-border: #5d9cec;
-  --card-bg: #3d516d;
+  --bg-color: #1a1a1a;          /* Neutral mörk */
+  --text-color: #f5f5f5;        /* Ljus text */
+  --primary-color: #e63946;     /* Samma röda accent */
+  --secondary-color: #f2b6ac;   /* Samma korall */
+  --border-color: #3a3a3a;      /* Neutral mörk grå */
+  --hover-color: #d66a5c;       /* Samma hover */
+  --skills-bg: #2a2a2a;         /* Mörk neutral */
+  --card-border: #3a3a3a;
+  --card-bg: #242424;
 
-  --scroll: linear-gradient(180deg, #4a90e2 0%, #92dff3 80%);
+  --scroll: linear-gradient(180deg, #e63946 0%, #f2b6ac 80%);
 }
 
 .bg-gradient-right {
@@ -89,7 +89,7 @@ button {
   cursor: pointer;
 }
 
-/* 🔄 Animationer */
+/* 🔄 Animationer (oförändrade) */
 @keyframes scroll {
   from {
     transform: translateX(100%);
@@ -154,7 +154,7 @@ button {
   animation: marquee-right 30s linear infinite;
 }
 
-/* 🔁 Skills-scroll */
+/* 🔁 Skills-scroll (oförändrat) */
 .scroll-container1,
 .scroll-container2 {
   display: flex;
