@@ -3,7 +3,7 @@ import { IoLocationOutline, IoCallOutline, IoMoon } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { LuSun } from "react-icons/lu";
 import { VscGithubAlt } from "react-icons/vsc";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const hobbies = [
   "Boxning",
@@ -39,183 +39,177 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 0.2, duration: 0.8 }}
-      className="flex-1 min-h-screen max-w-full p-6 sm:p-10 relative lg:border-r 
-                 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-gray-700"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="glass p-8 sticky top-8 rounded-[2rem] shadow-2xl overflow-hidden border border-white/20 dark:border-white/10"
     >
-      <div className="flex flex-col gap-5 max-w-sm mx-auto sm:mx-0">
-        <div className="flex flex-col items-center justify-center gap-5 relative">
-          <div className="perspective-3d">
-            <img
+      {/* Decorative Glow */}
+      <div className="absolute -top-24 -left-24 w-48 h-48 bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none" />
+
+      <div className="flex flex-col gap-8 relative z-10">
+        {/* Profile Section */}
+        <div className="flex flex-col items-center gap-6 text-center">
+          <div className="relative group w-full px-4">
+            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-cyan-400 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              whileHover={{ scale: 1.02 }}
               src="/Mustaf.jpeg"
               alt="Mustaf portrait"
-              className="w-auto h-48 rounded-full object-cover border-4 
-                         border-gray-200 dark:border-gray-600 float"
+              className="relative w-full aspect-[4/5] rounded-[2.5rem] object-cover border border-white/20 dark:border-white/10 shadow-2xl floating"
             />
           </div>
 
-          <div className="text-center space-y-1">
-            <h1 className="text-3xl sm:text-4xl font-extralight text-gray-900 dark:text-white">
-              Mustaf <span className="font-semibold">A</span>
+
+          <div className="space-y-2">
+            <h1 className="text-3xl font-outfit font-bold tracking-tight text-gray-900 dark:text-white">
+              Mustaf <span className="text-indigo-500 dark:text-indigo-400">A</span>
             </h1>
-            <h3 className="text-md sm:text-lg text-gray-700 dark:text-gray-300">
-              Web Developer
-            </h3>
+            <div className="flex flex-col items-center gap-2">
+              <p className="px-4 py-1.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 rounded-full text-sm font-medium inline-block">
+                Web & Mobile Developer
+              </p>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="flex items-center gap-2 px-3 py-1 bg-emerald-500/10 text-emerald-500 rounded-full text-[10px] font-bold uppercase tracking-wider border border-emerald-500/20"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Open for Work
+              </motion.div>
+            </div>
           </div>
 
-          {/* Dark Mode Toggle */}
+
           <motion.button
-            whileTap={{ scale: 0.8 }}
+            whileHover={{ scale: 1.1, rotate: 10 }}
+            whileTap={{ scale: 0.9 }}
             onClick={toggleDarkMode}
-            aria-label="Toggle dark mode"
-            className="absolute top-4 right-4 text-gray-700 dark:text-gray-300 text-2xl cursor-pointer"
+            className="p-3 bg-white/50 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 rounded-2xl shadow-sm border border-black/5 dark:border-white/5 transition-colors absolute top-0 right-0 group"
           >
-            {darkMode ? <LuSun /> : <IoMoon />}
+            {darkMode ? <LuSun className="text-xl text-yellow-500" /> : <IoMoon className="text-xl text-indigo-600" />}
           </motion.button>
         </div>
 
-        {/* Contact Section */}
-        <div className="border-b border-gray-200 dark:border-gray-700 p-5">
-          <ul className="space-y-4">
-            <li className="flex items-center gap-3 text-gray-800 dark:text-gray-200">
-              <IoLocationOutline className="text-2xl" />
-              <span className="text-lg">Stockholm</span>
-            </li>
-
-            <li className="relative flex items-center gap-3 cursor-pointer text-gray-800 dark:text-gray-200">
-              <MdOutlineEmail className="text-2xl" />
-              <button
-                onClick={handleCopyEmail}
-                onMouseEnter={() => setShowTooltipEmail(true)}
-                onMouseLeave={() => setShowTooltipEmail(false)}
-                className="text-lg focus:outline-none"
-                aria-label="Copy email address"
-              >
-                mustaf.h10@outlook.com
-              </button>
-
+        {/* Contact Info */}
+        <div className="space-y-4 pt-4 border-t border-black/5 dark:border-white/5">
+          <ContactItem icon={<IoLocationOutline />} text="Stockholm" />
+          
+          <div className="relative">
+            <button
+              onClick={handleCopyEmail}
+              onMouseEnter={() => setShowTooltipEmail(true)}
+              onMouseLeave={() => setShowTooltipEmail(false)}
+              className="w-full flex items-center gap-3 p-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/5 transition-all text-gray-700 dark:text-gray-300 group"
+            >
+              <MdOutlineEmail className="text-2xl text-indigo-500" />
+              <span className="text-sm truncate font-medium">mustaf.h10@outlook.com</span>
+            </button>
+            <AnimatePresence>
               {showTooltipEmail && (
-                <span className="absolute top-full left-1/2 -translate-x-1/2 mt-1 
-                                 bg-black text-white text-xs px-2 py-1 rounded-md whitespace-nowrap 
-                                 select-none pointer-events-none z-10">
-                  Click to copy
-                </span>
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute left-1/2 -translate-x-1/2 -top-10 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap z-50 shadow-xl"
+                >
+                  Klicka för att kopiera
+                </motion.span>
               )}
-            </li>
+            </AnimatePresence>
+          </div>
 
-            <li
-              className="relative flex items-center gap-3 text-gray-800 dark:text-gray-200 cursor-pointer"
-              onMouseEnter={() => setShowTooltipCall(true)}
-              onMouseLeave={() => setShowTooltipCall(false)}
-            >
-              <IoCallOutline className="text-2xl" />
-              <a href="tel:0762665179" className="text-lg">
-                0762665179
-              </a>
-
-              {showTooltipCall && (
-                <span className="absolute top-full left-1/2 -translate-x-1/2 mt-1 
-                                 bg-black text-white text-xs px-2 py-1 rounded-md whitespace-nowrap 
-                                 select-none pointer-events-none z-10">
-                  Click to call
-                </span>
-              )}
-            </li>
-          </ul>
+          <a href="tel:0762665179" className="flex items-center gap-3 p-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/5 transition-all text-gray-700 dark:text-gray-300 group">
+            <IoCallOutline className="text-2xl text-cyan-500" />
+            <span className="text-sm font-medium">0762665179</span>
+          </a>
         </div>
 
-        {/* Social Section */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="border-b border-gray-200 dark:border-gray-700 p-5 flex flex-col gap-5"
-        >
-          <h2 className="font-semibold text-2xl text-gray-900 dark:text-white">
-            SOCIAL
-          </h2>
-          <ul className="space-y-3">
-            <motion.li
-              whileHover={{
-                y: -3,
-                scale: 1.05,
-                transition: { type: "spring", stiffness: 300, damping: 10 },
-              }}
-              className="flex items-center gap-3 text-gray-800 dark:text-gray-200 cursor-pointer"
-            >
-              <VscGithubAlt className="text-2xl" />
-              <a
-                href="https://github.com/mmmnr10"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="GitHub"
-                className="text-lg hover:underline"
-              >
-                GitHub
-              </a>
-            </motion.li>
-          </ul>
-        </motion.div>
+        {/* Socials */}
+        <div className="space-y-4">
+          <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 ml-1">Social</h2>
+          <motion.a
+            whileHover={{ x: 5 }}
+            href="https://github.com/mmmnr10"
+            target="_blank"
+            className="flex items-center gap-3 p-3 rounded-2xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-lg hover:shadow-indigo-500/20 transition-all group"
+          >
+            <VscGithubAlt className="text-2xl" />
+            <span className="text-sm font-bold">GitHub</span>
+          </motion.a>
+        </div>
 
-        {/* Education Section */}
-        <div className="border-b border-gray-200 dark:border-gray-700 p-5">
-          <h2 className="font-semibold text-2xl text-gray-900 dark:text-white mb-4">
-            EDUCATION
-          </h2>
-          <ul className="flex flex-col gap-5">
+        {/* Education */}
+        <div className="space-y-4">
+          <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 ml-1">Utbildning</h2>
+          <div className="space-y-6">
             {education.map((item, index) => (
-              <motion.li
-                key={index}
-                className="relative flex flex-col gap-1 border-l-4 border-red-500 pl-5"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.8 }}
-              >
-                <span className="font-semibold text-lg text-gray-900 dark:text-white">
-                  {item.title}
-                </span>
-                <span className="font-light text-gray-700 dark:text-gray-300">
-                  {item.school}
-                </span>
-                <span className="text-sm text-gray-600 dark:text-gray-400">
-                  {item.year}
-                </span>
-              </motion.li>
+              <div key={index} className="relative pl-6 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-indigo-500 before:to-transparent">
+                <h4 className="text-sm font-bold text-gray-900 dark:text-white leading-tight">{item.title}</h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{item.school}</p>
+                <span className="text-[10px] font-bold text-indigo-500 dark:text-indigo-400 mt-1 block uppercase tracking-wider">{item.year}</span>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
 
-        {/* Hobbies Section */}
-        <div className="border-b border-gray-200 dark:border-gray-700 p-5">
-          <h2 className="font-semibold text-2xl text-gray-900 dark:text-white mb-4">
-            HOBBIES
-          </h2>
-          <ul className="flex flex-wrap gap-2 text-gray-800 dark:text-gray-200">
+        {/* Hobbies */}
+        <div className="space-y-4 pb-4">
+          <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 ml-1">Hobbys</h2>
+          <div className="flex flex-wrap gap-2">
             {hobbies.map((hobby, index) => (
-              <li
+              <span
                 key={index}
-                className="px-3 py-1 rounded-full bg-red-500 text-white text-sm cursor-default select-none"
+                className="px-3 py-1.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 text-xs font-medium text-gray-600 dark:text-gray-300 hover:border-indigo-500 transition-colors"
               >
                 {hobby}
-              </li>
+              </span>
             ))}
-          </ul>
+          </div>
         </div>
 
-        {/* Languages Section */}
-        <div className="p-5">
-          <h2 className="font-semibold text-2xl text-gray-900 dark:text-white mb-4">
-            LANGUAGES
-          </h2>
-          <ul className="list-disc list-inside text-gray-800 dark:text-gray-200 space-y-1">
-            <li>Swedish</li>
-            <li>English</li>
-            <li>Somali</li>
-          </ul>
+        {/* Languages */}
+        <div className="pt-6 border-t border-black/5 dark:border-white/5">
+          <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 ml-1 mb-4">Språk</h2>
+          <div className="space-y-3">
+            <LanguageProgress label="Svenska" progress="w-full" />
+            <LanguageProgress label="Engelska" progress="w-11/12" />
+            <LanguageProgress label="Somali" progress="w-full" />
+          </div>
         </div>
       </div>
     </motion.div>
   );
 }
+
+function ContactItem({ icon, text }) {
+  return (
+    <div className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 dark:text-gray-300">
+      <span className="text-2xl text-indigo-500">{icon}</span>
+      <span className="text-sm font-medium">{text}</span>
+    </div>
+  );
+}
+
+function LanguageProgress({ label, progress }) {
+  return (
+    <div className="space-y-1.5">
+      <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+        <span>{label}</span>
+      </div>
+      <div className="h-1 w-full bg-black/5 dark:bg-white/10 rounded-full overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: "100%" }}
+          className={`h-full bg-gradient-to-r from-indigo-500 to-cyan-400 ${progress}`}
+        />
+      </div>
+    </div>
+  );
+}
+

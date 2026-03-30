@@ -1,42 +1,41 @@
 "use client";
-import {useState, useEffect} from "react";
-import {PiArrowUpThin} from "react-icons/pi";
+import { useState, useEffect } from "react";
+import { FiArrowUp } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Showing the button after 40px
   useEffect(() => {
     function handleScroll() {
-      if (window.scrollY > 40) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY > 100);
     }
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll to top on click
   function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   return (
-    isVisible && (
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-4 right-4 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center duration-300"
-        aria-label="Scroll to top"
-      >
-        <PiArrowUpThin className="text-3xl" />
-      </button>
-    )
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.5, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.5, y: 20 }}
+          whileHover={{ y: -5 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 w-14 h-14 glass rounded-2xl flex items-center justify-center text-indigo-500 shadow-2xl z-50 border border-white/20 dark:border-white/10 group"
+          aria-label="Scroll to top"
+        >
+          <div className="absolute inset-0 bg-indigo-500/10 rounded-2xl blur-xl group-hover:bg-indigo-500/20 transition-colors" />
+          <FiArrowUp className="text-2xl relative z-10" />
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 }
+

@@ -21,18 +21,26 @@ export default function Home() {
   }, [darkMode]);
 
   return (
-    <div className="flex justify-center duration-1000 overflow-x-hidden">
-      <div className="w-full max-w-[1744px]">
-        <div className="flex-1 flex-col min-h-screen">
-          <div className="flex flex-col min-[1140px]:flex-row">
-            <HeaderLeft
-              darkMode={darkMode}
-              toggleDarkMode={() => setDarkMode(!darkMode)}
-            />
-            <div className="min-h-screen flex flex-col">
+    <div className="relative min-h-screen font-sans selection:bg-indigo-500 selection:text-white">
+      {/* Dynamic Background Effects */}
+      <div className="mesh-bg opacity-50 dark:opacity-30 pointer-events-none" />
+      
+      <div className="flex justify-center transition-colors duration-500">
+        <div className="w-full max-w-[1744px] px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-8 py-8 lg:py-12">
+            {/* Sidebar / Header Left */}
+            <aside className="lg:w-1/4 xl:w-1/5 shrink-0">
+              <HeaderLeft
+                darkMode={darkMode}
+                toggleDarkMode={() => setDarkMode(!darkMode)}
+              />
+            </aside>
+
+            {/* Main Content Area */}
+            <main className="flex-1 min-h-screen">
               <HomePage />
               <Footer />
-            </div>
+            </main>
           </div>
           <ScrollToTopButton />
         </div>
@@ -40,6 +48,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 {
   /* <div className="flex flex-col min-h-screen">

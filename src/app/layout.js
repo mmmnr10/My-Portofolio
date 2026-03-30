@@ -1,33 +1,27 @@
 import "./globals.css";
-import { Poppins, Bebas_Neue, Roboto } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 
-const poppinsFont = Poppins({
-  variable: "--font-poppins",
-  weight: ["300", "400", "600", "700"],
+const interFont = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const bebasFont = Bebas_Neue({
-  variable: "--bebas-neue",
-  weight: ["400"],
-  subsets: ["latin"],
-});
-
-const robotoFont = Roboto({
-  variable: "--font-roboto",
-  weight: ["400", "500", "700"],
+const outfitFont = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
 export const metadata = {
-  title: "Mustaf portfolio",
+  title: "Mustaf | Portfolio - Web & Mobile Developer",
   description:
-    "I am a web developer based in Stockholm, passionate about bringing ideas to life, with an eye for details",
+    "Explore the professional portfolio of Mustaf, a frontend developer specializing in building modern web and mobile applications with React, Next.js, and Tailwind CSS.",
+  keywords: ["Web Developer", "Frontend Developer", "Next.js", "React", "Mobile Development", "Stockholm"],
+  authors: [{ name: "Mustaf" }],
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link
           rel="stylesheet"
@@ -36,10 +30,16 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${poppinsFont.variable} ${bebasFont.variable} ${robotoFont.variable} antialiased `}
+        className={`
+          ${interFont.variable}
+          ${outfitFont.variable}
+          antialiased
+          font-sans
+        `}
       >
         {children}
       </body>
     </html>
   );
 }
+

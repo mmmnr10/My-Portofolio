@@ -1,172 +1,122 @@
 @import "tailwindcss";
 
-html {
-  scrollbar-width: normal;
+@theme {
+  --color-primary: #6366f1;
+  --color-secondary: #22d3ee;
+  --color-accent: #8b5cf6;
+  --color-glass-dark: rgba(255, 255, 255, 0.05);
+  --color-glass-light: rgba(255, 255, 255, 0.7);
 }
 
-::-webkit-scrollbar {
-  width: 6px;
+:root {
+  --bg-color: #f8fafc;
+  --text-color: #0f172a;
+  --primary-color: var(--color-primary);
+  --secondary-color: var(--color-secondary);
+  --border-color: rgba(0, 0, 0, 0.05);
+  --hover-color: #4f46e5;
+  --skills-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.1);
+  --card-bg: var(--color-glass-light);
+  --glass-blur: 12px;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--secondary-color);
-  border-radius: 10px;
+.dark {
+  --bg-color: #020617;
+  --text-color: #f8fafc;
+  --primary-color: #818cf8;
+  --secondary-color: #22d3ee;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --hover-color: #6366f1;
+  --skills-bg: #1e293b;
+  --card-border: rgba(255, 255, 255, 0.15);
+  --card-bg: var(--color-glass-dark);
 }
 
 body {
-  font-family: var(--font-poppins), sans-serif;
-  overflow-x: hidden;
-  width: 100vw;
-  height: 100vh;
   background-color: var(--bg-color);
   color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
 }
 
-/* 🌞 Light Mode */
-:root {
-  --bg-color: #ffffff;          /* Ren vit */
-  --text-color: #1e1e1e;        /* Mörk text */
-  --primary-color: #e63946;     /* Röd accent */
-  --secondary-color: #f2b6ac;   /* Ljus korall (neutral, ej blå) */
-  --border-color: #e5e5e5;      /* Ljus grå border */
-  --hover-color: #d66a5c;       /* Dämpad röd/orange hover */
-  --skills-bg: #f7f7f7;         /* Ljus neutral bakgrund */
-  --card-border: #e5e5e5;       /* Ljus grå border */
-  --card-bg: #ffffff;           /* Vit card-bakgrund */
+.glass {
+  background: var(--card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--card-border);
 }
 
-/* 🌚 Dark Mode (neutral, ingen blå) */
-.dark {
-  --bg-color: #1a1a1a;          /* Neutral mörk */
-  --text-color: #f5f5f5;        /* Ljus text */
-  --primary-color: #e63946;     /* Samma röda accent */
-  --secondary-color: #f2b6ac;   /* Samma korall */
-  --border-color: #3a3a3a;      /* Neutral mörk grå */
-  --hover-color: #d66a5c;       /* Samma hover */
-  --skills-bg: #2a2a2a;         /* Mörk neutral */
-  --card-border: #3a3a3a;
-  --card-bg: #242424;
-
-  --scroll: linear-gradient(180deg, #e63946 0%, #f2b6ac 80%);
+.mesh-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(34, 211, 238, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(244, 63, 94, 0.15) 0px, transparent 50%);
 }
 
-.bg-gradient-right {
-  background: linear-gradient(to right, var(--bg-color), transparent);
-}
-.bg-gradient-left {
-  background: linear-gradient(to left, var(--bg-color), transparent);
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: var(--scroll);
-}
-
-.card-bg {
-  background-color: var(--card-bg);
-}
-
-.secondary-color {
-  color: var(--secondary-color);
-}
-
-.skills-border {
-  border-color: var(--border-color);
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--bebas-neue), sans-serif;
-}
-
-.about-text {
-  font-family: var(--font-roboto), sans-serif;
-}
-
-a,
-button {
-  cursor: pointer;
-}
-
-/* 🔄 Animationer (oförändrade) */
-@keyframes scroll {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+.floating {
+  animation: floating 6s ease-in-out infinite;
 }
 
 @keyframes floating {
-  0% {
-    transform: translateY(-200px) rotate(0deg);
-  }
-  30% {
-    transform: translateY(0px) rotate(15deg);
-  }
-  50% {
-    transform: translateY(50px) rotate(-10deg);
-  }
-  70% {
-    transform: translateY(0px) rotate(5deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
-.float {
-  animation: floating 5s ease-in-out forwards;
-  transform-style: preserve-3d;
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-.animate-scroll {
-  display: flex;
-  width: max-content;
-  animation: scroll 30s linear infinite;
+.shimmer {
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes marquee-left {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 2s infinite;
 }
 
-@keyframes marquee-right {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.animate-marquee-left {
-  animation: marquee-left 30s linear infinite;
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
 }
 
-.animate-marquee-right {
-  animation: marquee-right 30s linear infinite;
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+  border: 2px solid var(--bg-color);
 }
 
-/* 🔁 Skills-scroll (oförändrat) */
-.scroll-container1,
-.scroll-container2 {
-  display: flex;
-  width: max-content;
-  animation: scroll 110s linear infinite;
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
 }
 
-.scroll-container2 {
-  animation-direction: reverse;
+::selection {
+  background-color: var(--primary-color);
+  color: white;
 }
 
-.hover-pause:hover .scroll-container1,
-.hover-pause:hover .scroll-container2 {
-  animation-play-state: paused;
-}
