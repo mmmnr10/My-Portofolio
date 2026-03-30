@@ -2,9 +2,20 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiArrowUpRight, FiMail, FiCode, FiLayers, FiDatabase, FiTool, FiChevronLeft } from "react-icons/fi";
+import { FiArrowUpRight, FiMail, FiCode, FiLayers, FiDatabase, FiTool, FiChevronLeft, FiGithub } from "react-icons/fi";
 
-const projects = [];
+const projects = [
+  {
+    title: "Nexus SaaS Dashboard",
+    text: "En toppmodern och interaktiv admin-panel designad för framtidens SaaS-företag.",
+    details: "Nexus Dashboard är en kraftfull plattform med ett sofistikerat glassmorphism-gränssnitt. Den erbjuder realtidsinsikter med dynamiska grafer för intäktsanalys, systemhälsa och användarkonvertering. Med sju dedikerade vyer — från Analytics till Projekthantering — levererar den en sömlös och högpresterande användarupplevelse. Fullt responsiv och optimerad för prestanda.",
+    imageSrc: "/nexus_dashboard.png",
+    techStack: ["React", "Next.js", "Framer Motion", "TailwindCSS", "Lucide React"],
+    liveLink: "https://nexus-dashboard-ecru-chi.vercel.app/",
+    githubLink: "https://github.com/mmmnr10/nexus-dashboard",
+    color: "from-indigo-500 to-cyan-400"
+  }
+];
 
 const skills = [
   {
@@ -191,13 +202,24 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <a
-                    href={selectedProject.liveLink}
-                    target="_blank"
-                    className="inline-flex items-center gap-4 bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-indigo-500/20 transition-all hover:scale-105"
-                  >
-                    Besök Live Demo <FiArrowUpRight />
-                  </a>
+                  <div className="flex flex-wrap gap-4 pt-4">
+                    <a
+                      href={selectedProject.liveLink}
+                      target="_blank"
+                      className="inline-flex items-center gap-4 bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-indigo-500/20 transition-all hover:scale-105"
+                    >
+                      Besök Live Demo <FiArrowUpRight />
+                    </a>
+                    {selectedProject.githubLink && (
+                      <a
+                        href={selectedProject.githubLink}
+                        target="_blank"
+                        className="inline-flex items-center gap-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-2xl font-bold border border-white/10 dark:border-white/5 transition-all hover:scale-105"
+                      >
+                        GitHub <FiGithub className="text-xl" />
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/20">
