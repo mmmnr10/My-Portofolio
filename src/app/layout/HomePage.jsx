@@ -14,6 +14,16 @@ const projects = [
     liveLink: "https://nexus-dashboard-ecru-chi.vercel.app/",
     githubLink: "https://github.com/mmmnr10/nexus-dashboard",
     color: "from-indigo-500 to-cyan-400"
+  },
+  {
+    title: "Aura Task Manager",
+    text: "En professionell Kanban-stil uppgiftshanterare med drag-and-drop och local storage.",
+    details: "Aura Task Manager är en avancerad uppgiftshanterare byggd för hög produktivitet. Den har en modern Glassmorphism-design, intuitiv dra-och-släpp-funktionalitet och använder Local Storage för att spara data lokalt. Skapad med fokus på prestanda och användarupplevelse.",
+    imageSrc: "/html.png.png",
+    techStack: ["HTML5", "CSS3", "JavaScript"],
+    liveLink: "https://html-projekt.vercel.app/",
+    githubLink: "https://github.com/mmmnr10/Html-Projekt",
+    color: "from-purple-500 to-pink-500"
   }
 ];
 
