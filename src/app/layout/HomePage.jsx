@@ -296,14 +296,10 @@ export default function HomePage() {
           <div className="h-1.5 w-20 bg-indigo-500 rounded-full mx-auto" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="max-w-2xl mx-auto">
           <TestimonialCard 
             text="Mustaf är en otroligt driven utvecklare som alltid strävar efter att leverera högsta kvalitet."
             author="Studiekamrat @ Chas"
-          />
-          <TestimonialCard 
-            text="Hans känsla för design och detaljer gör att hans projekt alltid sticker ut."
-            author="Instruktör"
           />
         </div>
       </section>
