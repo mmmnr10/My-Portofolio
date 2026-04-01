@@ -45,13 +45,13 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
       className="glass p-8 sticky top-8 rounded-[2rem] shadow-2xl overflow-hidden border border-white/20 dark:border-white/10"
     >
       {/* Decorative Glow */}
-      <div className="absolute -top-24 -left-24 w-48 h-48 bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute -top-24 -left-24 w-48 h-48 bg-amber-500/10 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="flex flex-col gap-8 relative z-10">
         {/* Profile Section */}
         <div className="flex flex-col items-center gap-6 text-center">
           <div className="relative group w-full px-4">
-            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-cyan-400 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-amber-600 to-amber-400 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
             <motion.img
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -64,11 +64,11 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
 
 
           <div className="space-y-2">
-            <h1 className="text-3xl font-outfit font-bold tracking-tight text-gray-900 dark:text-white">
-              Mustaf <span className="text-indigo-500 dark:text-indigo-400">A</span>
+            <h1 className="text-3xl font-outfit font-bold tracking-tight text-white">
+              Mustaf <span className="text-amber-500">A</span>
             </h1>
             <div className="flex flex-col items-center gap-2">
-              <p className="px-4 py-1.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 rounded-full text-sm font-medium inline-block">
+              <p className="px-4 py-1.5 bg-amber-500/10 text-amber-500 rounded-full text-sm font-medium inline-block">
                 Web & Mobile Developer
               </p>
               <motion.div
@@ -105,9 +105,9 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
               onClick={handleCopyEmail}
               onMouseEnter={() => setShowTooltipEmail(true)}
               onMouseLeave={() => setShowTooltipEmail(false)}
-              className="w-full flex items-center gap-3 p-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/5 transition-all text-gray-700 dark:text-gray-300 group"
+              className="w-full flex items-center gap-3 p-3 rounded-2xl hover:bg-white/5 transition-all text-gray-300 group"
             >
-              <MdOutlineEmail className="text-2xl text-indigo-500" />
+              <MdOutlineEmail className="text-2xl text-amber-500" />
               <span className="text-sm truncate font-medium">mustaf.h10@outlook.com</span>
             </button>
             <AnimatePresence>
@@ -124,8 +124,8 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
             </AnimatePresence>
           </div>
 
-          <a href="tel:0762665179" className="flex items-center gap-3 p-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/5 transition-all text-gray-700 dark:text-gray-300 group">
-            <IoCallOutline className="text-2xl text-cyan-500" />
+          <a href="tel:0762665179" className="flex items-center gap-3 p-3 rounded-2xl hover:bg-white/5 transition-all text-gray-300 group">
+            <IoCallOutline className="text-2xl text-amber-400" />
             <span className="text-sm font-medium">0762665179</span>
           </a>
         </div>
@@ -137,7 +137,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
             whileHover={{ x: 5 }}
             href="https://github.com/mmmnr10"
             target="_blank"
-            className="flex items-center gap-3 p-3 rounded-2xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-lg hover:shadow-indigo-500/20 transition-all group"
+            className="flex items-center gap-3 p-3 rounded-2xl bg-amber-500 text-black shadow-lg hover:shadow-amber-500/20 transition-all group"
           >
             <VscGithubAlt className="text-2xl" />
             <span className="text-sm font-bold">GitHub</span>
@@ -149,10 +149,10 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 ml-1">Utbildning</h2>
           <div className="space-y-6">
             {education.map((item, index) => (
-              <div key={index} className="relative pl-6 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-indigo-500 before:to-transparent">
-                <h4 className="text-sm font-bold text-gray-900 dark:text-white leading-tight">{item.title}</h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{item.school}</p>
-                <span className="text-[10px] font-bold text-indigo-500 dark:text-indigo-400 mt-1 block uppercase tracking-wider">{item.year}</span>
+              <div key={index} className="relative pl-6 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-amber-500 before:to-transparent">
+                <h4 className="text-sm font-bold text-white leading-tight">{item.title}</h4>
+                <p className="text-xs text-gray-400 mt-1">{item.school}</p>
+                <span className="text-[10px] font-bold text-amber-500 mt-1 block uppercase tracking-wider">{item.year}</span>
               </div>
             ))}
           </div>
@@ -165,7 +165,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
             {hobbies.map((hobby, index) => (
               <span
                 key={index}
-                className="px-3 py-1.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 text-xs font-medium text-gray-600 dark:text-gray-300 hover:border-indigo-500 transition-colors"
+                className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-gray-300 hover:border-amber-500 transition-colors"
               >
                 {hobby}
               </span>
@@ -189,8 +189,8 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
 
 function ContactItem({ icon, text }) {
   return (
-    <div className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 dark:text-gray-300">
-      <span className="text-2xl text-indigo-500">{icon}</span>
+    <div className="flex items-center gap-3 p-3 rounded-2xl text-gray-300">
+      <span className="text-2xl text-amber-500">{icon}</span>
       <span className="text-sm font-medium">{text}</span>
     </div>
   );
@@ -202,11 +202,11 @@ function LanguageProgress({ label, progress }) {
       <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
         <span>{label}</span>
       </div>
-      <div className="h-1 w-full bg-black/5 dark:bg-white/10 rounded-full overflow-hidden">
+      <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
-          className={`h-full bg-gradient-to-r from-indigo-500 to-cyan-400 ${progress}`}
+          className={`h-full bg-gradient-to-r from-amber-600 to-amber-400 ${progress}`}
         />
       </div>
     </div>
