@@ -339,10 +339,10 @@ export default function HomePage() {
         
         <div className="max-w-md mx-auto glass p-8 rounded-3xl border border-black/5 dark:border-white/10 text-center space-y-4">
           <div className="w-16 h-16 bg-indigo-500/20 rounded-2xl flex items-center justify-center mx-auto text-3xl text-indigo-500">
-            "
+            &quot;
           </div>
           <p className="text-gray-600 dark:text-gray-300 font-medium italic leading-relaxed">
-            "Mustaf visar en unik förmåga att snabbt sätta sig in i nya teknologier och omsätta dem i praktiken."
+            &quot;Mustaf visar en unik förmåga att snabbt sätta sig in i nya teknologier och omsätta dem i praktiken.&quot;
           </p>
           <div className="pt-4 border-t border-black/5 dark:border-white/10">
             <p className="font-bold text-gray-900 dark:text-white">Referenser lämnas gärna vid förfrågan.</p>
@@ -382,8 +382,8 @@ function TimelineItem({ year, title, place, description }) {
 function TestimonialCard({ text, author }) {
   return (
     <div className="p-8 glass rounded-[2rem] border border-white/20 relative overflow-hidden group">
-      <div className="absolute top-0 right-0 p-4 text-4xl text-indigo-500/10 group-hover:text-indigo-500/20 transition-colors">"</div>
-      <p className="text-lg text-gray-600 dark:text-gray-300 italic mb-6 leading-relaxed">"{text}"</p>
+      <div className="absolute top-0 right-0 p-4 text-4xl text-indigo-500/10 group-hover:text-indigo-500/20 transition-colors">&quot;</div>
+      <p className="text-lg text-gray-600 dark:text-gray-300 italic mb-6 leading-relaxed">&quot;{text}&quot;</p>
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-cyan-400" />
         <p className="font-bold text-sm text-gray-900 dark:text-white">{author}</p>
