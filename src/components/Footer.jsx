@@ -1,4 +1,4 @@
-import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiGithub, FiMail } from "react-icons/fi";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -17,7 +17,6 @@ export default function Footer() {
 
         <div className="flex gap-6">
           <FooterLink href="https://github.com/mmmnr10" icon={<FiGithub />} />
-          <FooterLink href="#" icon={<FiLinkedin />} />
           <FooterLink href="mailto:mustaf.h10@outlook.com" icon={<FiMail />} />
         </div>
       </div>
