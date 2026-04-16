@@ -60,40 +60,64 @@ const skills = [
   },
 ];
 
-const ProjectCard = ({ project, onClick }) => (
-  <motion.div
-    whileHover={{ y: -10 }}
-    className="group relative h-[420px] rounded-3xl overflow-hidden cursor-pointer bg-white/5 border border-white/10 shadow-xl hover:shadow-2xl transition-all"
-    onClick={() => onClick(project)}
-  >
-    {/* Image Container */}
-    <div className="h-2/3 overflow-hidden">
-      <img
-        src={project.imageSrc}
-        alt={project.title}
-        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-      />
-      <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-0 group-hover:opacity-60 transition-opacity duration-500`} />
-    </div>
+const ProjectCard = ({ project, onClick }) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
-    {/* Content */}
-    <div className="absolute bottom-0 left-0 right-0 p-6 glass border-t border-white/20">
-      <div className="flex justify-between items-start mb-2">
-        <h3 className="text-xl font-bold font-outfit text-white">{project.title}</h3>
-        <FiArrowUpRight className="text-xl text-amber-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  return (
+    <motion.div
+      whileHover={{ y: -10, scale: 1.02 }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => onClick(project)}
+      className="group relative h-[420px] rounded-[2rem] overflow-hidden cursor-pointer glass border border-white/5 hover:border-[#f2a641]/40 shadow-2xl transition-all duration-500"
+    >
+      {/* Hover Spotlight */}
+      <div 
+        className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-20"
+        style={{
+          opacity: isHovered ? 1 : 0,
+          background: `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(242, 166, 65, 0.12), transparent 40%)`
+        }} 
+      />
+
+      {/* Image Container */}
+      <div className="h-2/3 overflow-hidden relative z-10">
+        <img
+          src={project.imageSrc}
+          alt={project.title}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+        />
+        <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-0 group-hover:opacity-40 transition-opacity duration-700 mix-blend-overlay`} />
+        {/* Subtle inner shadow top */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
-      <p className="text-sm text-gray-400 line-clamp-2 mb-4">{project.text}</p>
-      
-      <div className="flex flex-wrap gap-2">
-        {project.techStack.slice(0, 3).map((s, i) => (
-          <span key={i} className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white/10 rounded-lg text-gray-300">
-            {s}
-          </span>
-        ))}
+
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 right-0 p-6 glass border-t border-white/5 z-10 bg-black/80 rounded-b-[2rem]">
+        <div className="flex justify-between items-start mb-2">
+          <h3 className="text-xl font-bold font-outfit text-white group-hover:text-amber-400 transition-colors duration-300">{project.title}</h3>
+          <FiArrowUpRight className="text-xl text-amber-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+        </div>
+        <p className="text-sm text-gray-400 line-clamp-2 mb-4 font-light">{project.text}</p>
+        
+        <div className="flex flex-wrap gap-2">
+          {project.techStack.slice(0, 3).map((s, i) => (
+            <span key={i} className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-gray-300 backdrop-blur-md">
+              {s}
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 const SkillsSection = () => (
   <section className="py-20">
@@ -142,37 +166,55 @@ export default function HomePage() {
   return (
     <div className="space-y-12 pb-20">
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex flex-col justify-center items-start space-y-8 py-20 relative overflow-hidden">
+      <section className="min-h-[70vh] flex flex-col justify-center items-start space-y-8 py-20 relative overflow-hidden">
+        {/* Glow orb */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="absolute -right-20 top-0 w-96 h-96 bg-amber-500/10 blur-[120px] rounded-full"
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute -right-20 top-10 w-[500px] h-[500px] bg-amber-500/10 blur-[150px] rounded-full pointer-events-none"
         />
         
-        <div className="space-y-4 max-w-3xl relative z-10">
-          <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="font-bold uppercase tracking-[0.3em] text-amber-500 text-sm"
-          >
-            Frontend Utvecklare
-          </motion.span>
-          
-          <motion.h1
+        <div className="space-y-6 max-w-4xl relative z-10">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-6xl md:text-8xl font-outfit font-bold text-white leading-[1.1]"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 backdrop-blur-md mb-4"
           >
-            Skapar digitala <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-300">upplevelser.</span>
+            <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+            <span className="font-bold uppercase tracking-[0.2em] text-amber-500 text-xs">
+              Tillgänglig för uppdrag
+            </span>
+          </motion.div>
+          
+          <motion.h1
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 1 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+            }}
+            className="text-6xl md:text-8xl lg:text-[7rem] font-outfit font-bold text-white leading-[1.05] tracking-tight"
+          >
+            <div className="overflow-hidden inline-block pb-2">
+              <motion.span variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.8, ease: [0.2, 0.8, 0.2, 1] } } }} className="inline-block">Skapar</motion.span>
+            </div>{" "}
+            <div className="overflow-hidden inline-block pb-2">
+              <motion.span variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.8, ease: [0.2, 0.8, 0.2, 1] } } }} className="inline-block">digitala</motion.span>
+            </div> <br />
+            <div className="overflow-hidden inline-block py-2">
+              <motion.span variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.8, ease: [0.2, 0.8, 0.2, 1] } } }} className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#d48b26] via-[#f2a641] to-[#ffd875]">
+                upplevelser.
+              </motion.span>
+            </div>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-gray-400 leading-relaxed font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+            className="text-xl md:text-2xl text-gray-400 leading-relaxed font-inter font-light max-w-2xl"
           >
             Hej, jag heter Mustaf. Jag är en passionerad utvecklare som kombinerar 
             kreativ design med robust teknologi för att bygga framtidens webb och mobilappar.
@@ -316,22 +358,30 @@ export default function HomePage() {
 
       {/* Contact CTA */}
       <section className="py-20">
-        <div className="relative glass p-12 md:p-24 rounded-[3rem] text-center overflow-hidden border border-white/20">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full -mr-48 -mt-48" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-600/10 blur-[100px] rounded-full -ml-48 -mb-48" />
+        <div className="relative glass p-12 md:p-24 rounded-[3rem] text-center overflow-hidden border border-white/5 hover:border-amber-500/20 transition-colors duration-700">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 blur-[120px] rounded-full -mr-48 -mt-48 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-700/10 blur-[120px] rounded-full -ml-48 -mb-48 pointer-events-none" />
           
-          <div className="relative z-10 space-y-8 max-w-2xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-outfit font-bold text-white">
+          <div className="relative z-10 space-y-10 max-w-2xl mx-auto">
+            <h2 className="text-5xl md:text-7xl font-outfit font-bold text-white leading-tight">
               Redo att starta ett <br />
-              <span className="text-amber-500">nytt projekt?</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-300">nytt projekt?</span>
             </h2>
-            <p className="text-xl text-gray-400 font-medium">
+            <p className="text-xl text-gray-400 font-light max-w-xl mx-auto">
               Jag letar alltid efter nya spännande utmaningar och samarbeten. 
-              Tveka inte att höra av dig!
+              Tveka inte att höra av dig om du vill bygga något extraordinärt.
             </p>
-            <a href="mailto:Mustaf.h10@outlook.com" className="inline-flex items-center gap-4 bg-amber-500 hover:bg-amber-600 text-black px-12 py-5 rounded-3xl font-bold text-lg hover:scale-105 transition-all shadow-2xl">
-              Kontakta mig <FiMail className="text-xl" />
-            </a>
+            <motion.a 
+              href="mailto:Mustaf.h10@outlook.com" 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative inline-flex items-center gap-4 bg-transparent text-white border border-[#f2a641]/50 hover:border-[#f2a641] px-12 py-5 rounded-full font-bold text-lg transition-all overflow-hidden shadow-[0_0_40px_rgba(242,166,65,0.15)] hover:shadow-[0_0_80px_rgba(242,166,65,0.4)]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-[#d48b26] to-[#f2a641] opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+              <span className="relative z-10 flex items-center gap-4">
+                Kontakta mig <FiMail className="text-xl group-hover:scale-110 transition-transform duration-300" />
+              </span>
+            </motion.a>
           </div>
         </div>
       </section>

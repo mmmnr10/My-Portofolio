@@ -42,7 +42,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="glass p-8 sticky top-8 rounded-[2rem] shadow-2xl overflow-hidden border border-white/20 dark:border-white/10"
+      className="glass p-8 sticky top-8 rounded-[2rem] shadow-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-amber-500/20"
     >
       {/* Decorative Glow */}
       <div className="absolute -top-24 -left-24 w-48 h-48 bg-amber-500/10 blur-[100px] rounded-full pointer-events-none" />
@@ -105,7 +105,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
               onClick={handleCopyEmail}
               onMouseEnter={() => setShowTooltipEmail(true)}
               onMouseLeave={() => setShowTooltipEmail(false)}
-              className="w-full flex items-center gap-3 p-3 rounded-2xl hover:bg-white/5 transition-all text-gray-300 group"
+              className="w-full flex items-center gap-3 p-3 rounded-2xl hover:bg-white/5 hover:text-amber-400 transition-all text-gray-300 group"
             >
               <MdOutlineEmail className="text-2xl text-amber-500" />
               <span className="text-sm truncate font-medium">mustaf.h10@outlook.com</span>
