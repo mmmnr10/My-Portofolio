@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row items-center justify-between gap-6 opacity-60 hover:opacity-100 transition-opacity">
         <div className="space-y-1 text-center md:text-left">
           <p className="text-sm font-bold tracking-tight text-white">
-            © {year} Mustaf <span className="text-amber-500">A.</span>
+            © {year} Mustaf <span className="text-[#f2a641]">A.</span>
           </p>
           <p className="text-xs text-gray-400 font-medium font-outfit">
             Frontend Utvecklare • Stockholm
@@ -30,7 +30,7 @@ function FooterLink({ href, icon }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-xl text-gray-400 hover:text-amber-500 transition-all hover:scale-110"
+      className="text-xl text-gray-400 hover:text-[#f2a641] transition-all hover:scale-110"
     >
       {icon}
     </a>
