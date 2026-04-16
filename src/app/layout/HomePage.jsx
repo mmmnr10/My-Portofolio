@@ -24,6 +24,16 @@ const projects = [
     liveLink: "https://html-projekt.vercel.app/",
     githubLink: "https://github.com/mmmnr10/Html-Projekt",
     color: "from-amber-600 to-amber-400"
+  },
+  {
+    title: "Wish List",
+    text: "En stilren och interaktiv plattform för att spara och organisera dina favoritprodukter.",
+    details: "Wish List är ett vackert designat projekt som tillåter användare att smidigt hantera sin önskelista. Applikationen erbjuder ett intuitivt gränssnitt med fokus på användarvänlighet och en modern estetisk design. Perfekt för att hålla koll på framtida köp.",
+    imageSrc: "/senastebilden.png",
+    techStack: ["React", "JavaScript", "TailwindCSS"],
+    liveLink: "https://wish-list-hazel.vercel.app/",
+    githubLink: "https://github.com/mmmnr10/Wish-List",
+    color: "from-amber-600 to-amber-400"
   }
 ];
 
