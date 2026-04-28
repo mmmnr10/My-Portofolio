@@ -179,7 +179,7 @@ export default function HeaderLeft({ darkMode, toggleDarkMode }) {
           <div className="space-y-3">
             <LanguageProgress label="Svenska" progress="w-full" />
             <LanguageProgress label="Engelska" progress="w-11/12" />
-            <LanguageProgress label="Somali" progress="w-full" />
+            
           </div>
         </div>
       </div>
